@@ -10,8 +10,23 @@
 
 add_filter('the_content', 'addToEndOfPost');
 
+
+/*
+ this will che check if the post is single ]
+ and then it is coming from the main routes using 
+ the is_main_query method from wordpress
+*/
 function addToEndOfPost($content){
-    return  "<p> My name is EJ <p/>";
+    if(is_single() && is_main_query() ){
+      return  $content. "<p> My name is EJ <p/>";
+    }
+      return $content. "<p>did not satisfied condition</p>";
 }
+
+
+
+
+
+
 
 
